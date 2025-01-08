@@ -1,32 +1,55 @@
-import logo from './logo.svg';
 import './App.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from 'react';
+
+
 
 function App() {
+
+  const [tytul, setTytul] = useState('');
+  const [rodzaj, setRodzaj] = useState('');
+
+  const rodzajMap = {
+    0: "Nie wybrano",
+    1: "Komedia",
+    2: "Obyczajowy",
+    3: "Sensacyjny",
+    4: "Horror",
+  }
+
+
+  const Add = (e) => {
+    e.preventDefault();
+    console.log(`Tytuł: ${tytul}; Rodzaj: ${rodzajMap[rodzaj]}`)
+  }
+
   return (
     <>
-      <forms>
-        <div class="form-group">
-          <label for="tytul-filmu">Tytuł filmu</label>
+      <form>
+        <div className="form-group">
+          <label htmlFor="tytul filmu">Tytuł filmu</label>
 
           <input type="text" 
-          class="form-control" 
-          id="tytul" 
-          placeholder="Tytuł"></input>
+          className="form-control" 
+          value={tytul}
+          placeholder="Tytuł"
+          onChange={(e) => setTytul(e.target.value)}></input>
 
-          <label for="rodzja">Rodzaj</label>
+          <label htmlFor="rodzaj">Rodzaj</label>
 
-          <select class="form-control">
-            <option name="blank" value="0" select="True"></option>
-            <option name="komedia" value="1">Komedia</option>
-            <option name="obyczajowy" value="2">Obyczajowy</option>
-            <option name="sensacyjny" value="3">Sensacyjny</option>
-            <option name="horror" value="4">Horror</option>
+          <select className="form-control"
+          value={rodzaj}
+          onChange={(e) => setRodzaj(parseInt(e.target.value))}>
+            <option value="0" selected="True"></option>
+            <option value="1">Komedia</option>
+            <option value="2">Obyczajowy</option>
+            <option value="3">Sensacyjny</option>
+            <option value="4">Horror</option>
           </select>
         </div>
-      </forms>
+      </form>
 
-      <button id="przycisk" type="button" class="btn btn-primary">Dodaj</button>
+      <button id="przycisk" type="submit" className="btn btn-primary" onClick={Add}>Dodaj</button>
     </>
   );
 }
