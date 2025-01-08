@@ -1,24 +1,33 @@
 import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.css';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <forms>
+        <div class="form-group">
+          <label for="tytul-filmu">Tytuł filmu</label>
+
+          <input type="text" 
+          class="form-control" 
+          id="tytul" 
+          placeholder="Tytuł"></input>
+
+          <label for="rodzja">Rodzaj</label>
+
+          <select class="form-control">
+            <option name="blank" value="0" select="True"></option>
+            <option name="komedia" value="1">Komedia</option>
+            <option name="obyczajowy" value="2">Obyczajowy</option>
+            <option name="sensacyjny" value="3">Sensacyjny</option>
+            <option name="horror" value="4">Horror</option>
+          </select>
+        </div>
+      </forms>
+
+      <button id="przycisk" type="button" class="btn btn-primary">Dodaj</button>
+    </>
   );
 }
 
